@@ -419,6 +419,7 @@
 														 "--jsx-bracket-same-line" "true"
 														 "--trailing-comma" "es5"
 														 ))
+		(setq prettier-js-command (concat (projectile-project-root) "node_modules/.bin/prettier"))
 		(prettier-js-mode))
 	(add-hook 'web-mode-hook
             (lambda ()
