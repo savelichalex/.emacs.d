@@ -51,6 +51,9 @@
 
 (package-initialize)
 
+;; install fonts if wasn't installed yet
+(shell-command "~/.emacs.d/install_fonts.sh")
+
 ;; update the package metadata is the local cache is missing
 (unless package-archive-contents
   (package-refresh-contents))
@@ -227,7 +230,8 @@
 (use-package counsel-projectile
   :after counsel projectile
   :config
-  (counsel-projectile-mode))
+  (counsel-projectile-mode)
+  (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map))
 
 (use-package flycheck
   :config
@@ -392,7 +396,8 @@
 								(subword-mode 1)
 								(smartparens-mode 1)
 								(setq emmet-expand-jsx-className? t)
-								(setup-tslint))))
+								(setup-tslint)
+								(flycheck-add-mode 'typescript-tslint 'web-mode))))
 	(add-hook 'web-mode-hook 'emmet-mode))
 
 (use-package prettier-js
